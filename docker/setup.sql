@@ -1,0 +1,1 @@
+CREATE DATABASE test_fastify_documented_api;

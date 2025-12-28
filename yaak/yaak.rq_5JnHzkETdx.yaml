@@ -1,0 +1,28 @@
+type: http_request
+model: http_request
+id: rq_5JnHzkETdx
+createdAt: 2025-11-02T03:48:59.436579244
+updatedAt: 2025-12-18T21:35:29.485846513
+workspaceId: wk_mgfmCzmgTY
+folderId: fl_uPmpiQjcVg
+authentication: {}
+authenticationType: null
+body:
+  text: |
+    {
+      "name": "${[ faker.person.fullName() ]}",
+      "email": "${[ faker.internet.email() ]}",
+      "password": "${[ faker.internet.password() ]}"
+    }
+bodyType: application/json
+description: ''
+headers:
+- enabled: true
+  name: Content-Type
+  value: application/json
+  id: 0JcQTSz3tD
+method: POST
+name: Create a user
+sortPriority: 1000.0
+url: ${[ BASE_URL ]}/users
+urlParameters: []

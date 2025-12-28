@@ -1,0 +1,29 @@
+type: http_request
+model: http_request
+id: rq_EEgYJqkq3i
+createdAt: 2025-11-03T04:34:57.179917116
+updatedAt: 2025-12-28T12:46:00.344625342
+workspaceId: wk_mgfmCzmgTY
+folderId: fl_uPmpiQjcVg
+authentication:
+  token: ${[ response.body.path(request='rq_JjBtRBhGoR', path=b64'JC50b2tlbg', behavior='ttl', ttl='3000') ]}
+authenticationType: bearer
+body:
+  text: |
+    {
+      "currentPassword": "manager-password",
+      "name": "Update Manager user",
+      "email": "manager@manager.com"
+    }
+bodyType: application/json
+description: ''
+headers:
+- enabled: true
+  name: Content-Type
+  value: application/json
+  id: Fr2Ixuc5J6
+method: PATCH
+name: Update user
+sortPriority: 5000.0
+url: ${[ BASE_URL ]}/users
+urlParameters: []

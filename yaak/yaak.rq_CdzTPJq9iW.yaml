@@ -1,0 +1,27 @@
+type: http_request
+model: http_request
+id: rq_CdzTPJq9iW
+createdAt: 2025-12-16T23:17:23.662012991
+updatedAt: 2025-12-28T12:45:12.048876546
+workspaceId: wk_mgfmCzmgTY
+folderId: fl_3GHgEY52DY
+authentication: {}
+authenticationType: null
+body:
+  text: |
+    {
+      "email": "regular@regular.com",
+      "password": "regular-password"
+    }
+bodyType: application/json
+description: ''
+headers:
+- enabled: true
+  name: Content-Type
+  value: application/json
+  id: W3su95mTc0
+method: POST
+name: Not manager login
+sortPriority: -1762055279863.999
+url: ${[ BASE_URL ]}/auth/login
+urlParameters: []

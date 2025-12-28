@@ -1,0 +1,14 @@
+type: workspace
+model: workspace
+id: wk_mgfmCzmgTY
+createdAt: 2025-11-02T03:47:40.036673742
+updatedAt: 2025-11-02T03:47:40.036676117
+authentication: {}
+authenticationType: null
+description: ''
+headers: []
+name: fastify-zod-swagger-docs
+encryptionKeyChallenge: null
+settingValidateCertificates: true
+settingFollowRedirects: true
+settingRequestTimeout: 0

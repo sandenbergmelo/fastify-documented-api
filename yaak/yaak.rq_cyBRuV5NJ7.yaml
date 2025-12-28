@@ -1,0 +1,39 @@
+type: http_request
+model: http_request
+id: rq_cyBRuV5NJ7
+createdAt: 2025-12-18T21:30:56.713475017
+updatedAt: 2025-12-26T06:28:44.749149862
+workspaceId: wk_mgfmCzmgTY
+folderId: fl_uPmpiQjcVg
+authentication:
+  token: ${[ response.body.path(request='rq_JjBtRBhGoR', behavior='ttl', ttl='3000', result='first', join=b64'LCA', path=b64'JC50b2tlbg') ]}
+authenticationType: bearer
+body:
+  text: |
+    {
+      "role": "manager"
+    }
+bodyType: application/json
+description: ''
+headers:
+- enabled: true
+  name: Content-Type
+  value: application/json
+  id: Fr2Ixuc5J6
+method: PATCH
+name: Update user role
+sortPriority: 5000.001
+url: ${[ BASE_URL ]}/users/update-role/${[ response.body.path(behavior='smart', ttl='0', result='first', join=b64'LCA', request='rq_PERiFh2ZF9', path=b64'JC5pZA') ]}
+urlParameters:
+- enabled: false
+  name: ''
+  value: ''
+  id: 8PNqsGq9IJ
+- enabled: false
+  name: ''
+  value: ''
+  id: HZHPYP2CyQ
+- enabled: true
+  name: ''
+  value: ''
+  id: 5SGgDnFyay

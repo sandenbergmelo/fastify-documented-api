@@ -1,0 +1,19 @@
+type: http_request
+model: http_request
+id: rq_V3fujGuQxR
+createdAt: 2025-12-18T21:12:56.252817419
+updatedAt: 2025-12-18T21:14:46.969439247
+workspaceId: wk_mgfmCzmgTY
+folderId: fl_uPmpiQjcVg
+authentication:
+  token: ${[ response.body.path(behavior='smart', ttl='0', result='first', join=b64'LCA', request='rq_JjBtRBhGoR', path=b64'JC50b2tlbg') ]}
+authenticationType: bearer
+body: {}
+bodyType: null
+description: ''
+headers: []
+method: GET
+name: List Users
+sortPriority: 2000.0
+url: ${[ BASE_URL ]}/users
+urlParameters: []

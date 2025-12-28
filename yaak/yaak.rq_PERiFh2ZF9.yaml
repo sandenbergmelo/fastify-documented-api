@@ -1,0 +1,27 @@
+type: http_request
+model: http_request
+id: rq_PERiFh2ZF9
+createdAt: 2025-11-02T22:21:32.198607001
+updatedAt: 2025-12-18T21:14:46.953121469
+workspaceId: wk_mgfmCzmgTY
+folderId: fl_uPmpiQjcVg
+authentication:
+  token: ${[ response.body.path(request='rq_JjBtRBhGoR', path=b64'JC50b2tlbg', behavior='ttl', ttl='3000') ]}
+authenticationType: bearer
+body: {}
+bodyType: null
+description: ''
+headers:
+- enabled: true
+  name: ''
+  value: ''
+  id: THB3yz8Dix
+- enabled: true
+  name: ''
+  value: ''
+  id: xjNK0gfiVq
+method: GET
+name: Profile
+sortPriority: 0.0
+url: ${[ BASE_URL ]}/users/profile
+urlParameters: []
