@@ -11,9 +11,9 @@
     "test:cov": "dotenv -e .env.test vitest -- --coverage",
     "test:ui": "dotenv -e .env.test vitest -- --ui",
     "db:generate": "drizzle-kit generate",
-    "db:seed": "node --env-file .env src/database/seed.ts",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
+    "db:seed": "node --env-file .env src/database/seed.ts",
     "lint": "eslint .",
     "format": "eslint --fix ."
   },

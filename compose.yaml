@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:18-alpine
+    restart: always
+    container_name: fastify_documented_api_db
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: fastify_documented_api
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./docker/setup.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  pgdata:

@@ -1,0 +1,9 @@
+node_modules
+yaak
+test
+.vscode
+.env*
+.git
+.gitignore
+coverage
+vitest.config.ts
