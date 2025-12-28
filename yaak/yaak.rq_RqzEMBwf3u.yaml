@@ -1,0 +1,28 @@
+type: http_request
+model: http_request
+id: rq_RqzEMBwf3u
+createdAt: 2025-12-28T14:26:52.766061044
+updatedAt: 2025-12-28T14:27:18.559600288
+workspaceId: wk_mgfmCzmgTY
+folderId: fl_uPmpiQjcVg
+authentication: {}
+authenticationType: null
+body:
+  text: |
+    {
+      "name": "Manager",
+      "email": "manager@manager.com",
+      "password": "manager-password"
+    }
+bodyType: application/json
+description: ''
+headers:
+- enabled: true
+  name: Content-Type
+  value: application/json
+  id: 0JcQTSz3tD
+method: POST
+name: Create a user Manager
+sortPriority: 1000.001
+url: ${[ BASE_URL ]}/users
+urlParameters: []
