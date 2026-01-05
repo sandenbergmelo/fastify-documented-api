@@ -1,11 +1,10 @@
-import { describe, expect, test } from 'vitest'
+import { omit } from 'lodash'
+import { describe, expect } from 'vitest'
 import { server } from '../../src/server.ts'
-import { makeAuthenticatedUser } from '../factories/make-user.ts'
+import { test } from '../fixtures.ts'
 
 describe('GET /users/profile', () => {
-  test('should return the logged user information', async () => {
-    const { token, user } = await makeAuthenticatedUser('manager')
-
+  test('should return the logged user information', async ({ user, token }) => {
     const response = await server.inject({
       method: 'GET',
       url: '/users/profile',
@@ -15,6 +14,6 @@ describe('GET /users/profile', () => {
     })
 
     expect(response.statusCode).toBe(200)
-    expect(JSON.parse(response.body)).toEqual(user)
+    expect(JSON.parse(response.body)).toEqual(omit(user, ['passwordHash']))
   })
 })

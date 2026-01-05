@@ -1,6 +1,6 @@
-import { describe, expect, test } from 'vitest'
+import { describe, expect } from 'vitest'
 import { server } from '../../src/server.ts'
-import { makeUser } from '../factories/make-user.ts'
+import { test } from '../fixtures.ts'
 
 describe('POST /users', () => {
   test('should create a user', async () => {
@@ -20,15 +20,15 @@ describe('POST /users', () => {
     })
   })
 
-  test('should return 409 when email already exists', async () => {
-    const { user: existingUser, passwordBeforeHash } = await makeUser()
-
+  test('should return 409 when email already exists', async ({
+    user, passwordBeforeHash,
+  }) => {
     const response = await server.inject({
       method: 'POST',
       url: '/users',
       payload: {
-        name: existingUser.name,
-        email: existingUser.email,
+        name: user.name,
+        email: user.email,
         password: passwordBeforeHash,
       },
     })
