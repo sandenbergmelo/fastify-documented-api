@@ -12,6 +12,7 @@ export default defineConfig([
       drizzle,
     },
     rules: {
+      'no-empty-pattern': 'off',
       'import-newlines/enforce': ['warn', { items: 40, 'max-len': 80 }],
       ...drizzle.configs.recommended.rules,
     },
