@@ -7,8 +7,6 @@ describe('GET /users', () => {
   test.scoped({ userRole: 'manager' })
 
   test('should return 1 user', async ({ user, token }) => {
-    // const { token, user } = await makeAuthenticatedUser('manager')
-
     const response = await server.inject({
       method: 'GET',
       url: '/users',

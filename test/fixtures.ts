@@ -17,9 +17,18 @@ interface UserFixture {
   user: User
   passwordBeforeHash: string
   token: string
+  transaction: void
 }
 
 export const test = base.extend<UserFixture>({
+  transaction: [
+    async ({}, use) => {
+      await db.execute('BEGIN')
+      await use()
+      await db.execute('ROLLBACK')
+    },
+    { auto: true },
+  ],
   userRole: 'regular',
   passwordBeforeHash: async ({}, use) => {
     const passwordBeforeHash = randomUUID()
