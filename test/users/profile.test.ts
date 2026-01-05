@@ -1,4 +1,4 @@
-import { omit } from 'lodash'
+import { omit } from 'es-toolkit/object'
 import { describe, expect } from 'vitest'
 import { server } from '../../src/server.ts'
 import { test } from '../fixtures.ts'

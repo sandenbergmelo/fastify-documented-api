@@ -1,7 +1,7 @@
-import { omit } from 'lodash'
 import { describe, expect } from 'vitest'
 import { server } from '../../src/server.ts'
 import { test } from '../fixtures.ts'
+import { omit } from 'es-toolkit/object'
 
 describe('GET /users', () => {
   test.scoped({ userRole: 'manager' })
