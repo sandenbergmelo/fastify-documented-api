@@ -1,8 +1,8 @@
 type: http_request
 model: http_request
-id: rq_RqzEMBwf3u
-createdAt: 2025-12-28T14:26:52.766061044
-updatedAt: 2026-01-06T16:46:41.649873566
+id: rq_62q6sYNdtC
+createdAt: 2026-01-06T16:45:43.245650419
+updatedAt: 2026-01-06T16:46:38.281502790
 workspaceId: wk_mgfmCzmgTY
 folderId: fl_wrrFmzxNQn
 authentication: {}
@@ -10,9 +10,9 @@ authenticationType: null
 body:
   text: |
     {
-      "name": "Manager user",
-      "email": "manager@manager.com",
-      "password": "manager-password"
+      "name": "Regular user",
+      "email": "regular@regular.com",
+      "password": "regular-password"
     }
 bodyType: application/json
 description: ''
@@ -22,7 +22,7 @@ headers:
   value: application/json
   id: 0JcQTSz3tD
 method: POST
-name: Create a user Manager
-sortPriority: 0.0
+name: Create a user not Manager Copy
+sortPriority: 1000.0
 url: ${[ BASE_URL ]}/users
 urlParameters: []

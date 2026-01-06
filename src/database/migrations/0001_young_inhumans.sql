@@ -1,0 +1,2 @@
+ALTER TABLE "users" ADD COLUMN "deleted_at" timestamp with time zone;--> statement-breakpoint
+CREATE VIEW "public"."active_users" AS (select "id", "name", "email", "role", "password_hash", "created_at", "updated_at" from "users" where "users"."deleted_at" is null);

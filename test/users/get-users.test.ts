@@ -1,4 +1,3 @@
-import { omit } from 'lodash'
 import { describe, expect } from 'vitest'
 import { server } from '../../src/server.ts'
 import { test } from '../fixtures.ts'
@@ -15,9 +14,13 @@ describe('GET /users', () => {
       },
     })
 
+    const body = JSON.parse(response.body)
+
     expect(response.statusCode).toBe(200)
-    expect(JSON.parse(response.body)).toEqual({
-      users: [omit(user, ['passwordHash'])],
-    })
+    expect(body.users).toHaveLength(1)
+
+    expect({ users: [user] }).toMatchObject(body)
+    expect(body.users[0]).not.toHaveProperty('passwordHash')
+    expect(body.users[0]).not.toHaveProperty('deletedAt')
   })
 })

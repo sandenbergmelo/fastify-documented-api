@@ -1,0 +1,27 @@
+type: http_request
+model: http_request
+id: rq_q2MbJN8fjh
+createdAt: 2026-01-06T16:47:05.919173324
+updatedAt: 2026-01-06T16:59:23.432394562
+workspaceId: wk_mgfmCzmgTY
+folderId: fl_uPmpiQjcVg
+authentication:
+  token: ${[ response.body.path(behavior='ttl', ttl='3000', result='first', join=b64'LCA', request='rq_CdzTPJq9iW', path=b64'JC50b2tlbg') ]}
+authenticationType: bearer
+body:
+  text: |
+    {
+      "currentPassword": "regular-password"
+    }
+bodyType: application/json
+description: ''
+headers:
+- enabled: true
+  name: Content-Type
+  value: application/json
+  id: NtUurKI5sj
+method: DELETE
+name: Delete user
+sortPriority: 2000.001
+url: ${[ BASE_URL ]}/users
+urlParameters: []

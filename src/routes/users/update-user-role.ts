@@ -2,7 +2,7 @@ import { eq } from 'drizzle-orm'
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
 import { db } from '../../database/client.ts'
-import { users } from '../../database/schema/users.ts'
+import { activeUsersView, users } from '../../database/schema/users.ts'
 import { auth } from '../../hooks/auth.ts'
 import { checkUserRole } from '../../hooks/check-role.ts'
 import {
@@ -47,9 +47,11 @@ export const updateUserRole: FastifyPluginAsyncZod = async (app) => {
       const { id } = request.params
       const { role } = request.body
 
-      const existingUser = await db.query.users.findFirst({
-        where: eq(users.id, id),
-      })
+      const [existingUser] = await db
+        .select()
+        .from(activeUsersView)
+        .where(eq(activeUsersView.id, id))
+        .limit(1)
 
       if (!existingUser) {
         return reply.status(404).send({ message: 'User not found' })

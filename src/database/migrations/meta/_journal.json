@@ -8,6 +8,13 @@
       "when": 1766565379413,
       "tag": "0000_create_users_table",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1767709457045,
+      "tag": "0001_young_inhumans",
+      "breakpoints": true
     }
   ]
 }
