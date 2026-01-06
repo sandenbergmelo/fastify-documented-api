@@ -13,6 +13,7 @@ import { env } from './env.ts'
 import { login } from './routes/auth/login.ts'
 import { root } from './routes/root.ts'
 import { createUser } from './routes/users/create-user.ts'
+import { deleteUser } from './routes/users/delete-user.ts'
 import { getUsers } from './routes/users/get-users.ts'
 import { profile } from './routes/users/profile.ts'
 import { updateUserRole } from './routes/users/update-user-role.ts'
@@ -94,5 +95,6 @@ app.register(getUsers)
 app.register(profile)
 app.register(updateUserRole)
 app.register(updateUser)
+app.register(deleteUser)
 
 export { app as server }

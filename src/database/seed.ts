@@ -1,10 +1,14 @@
 import { fakerPT_BR as faker } from '@faker-js/faker'
 import * as argon2 from 'argon2'
+import { sql } from 'drizzle-orm'
 import { db } from './client.ts'
 import { users } from './schema/users.ts'
 
 async function seed() {
   console.log('Seeding database...')
+
+  // eslint-disable-next-line drizzle/enforce-delete-with-where
+  await db.delete(users)
 
   const passwordHash = await argon2.hash('secret-password')
 
@@ -26,7 +30,7 @@ async function seed() {
       email: 'deleted@user.com',
       passwordHash,
       role: 'regular',
-      deletedAt: new Date(),
+      deletedAt: sql`now()`,
     },
     {
       name: faker.person.fullName(),
