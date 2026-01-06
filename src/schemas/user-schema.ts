@@ -9,3 +9,7 @@ export const publicUserSchema = z.object({
   createdAt: z.date(),
   updatedAt: z.date(),
 })
+
+export const passwordConfirmationSchema = z.object({
+  currentPassword: z.string().min(8).max(64),
+})
