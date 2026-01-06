@@ -19,7 +19,10 @@ describe('GET /users', () => {
     expect(response.statusCode).toBe(200)
     expect(body.users).toHaveLength(1)
 
+    console.log(user)
+
     expect({ users: [user] }).toMatchObject(body)
     expect(body.users[0]).not.toHaveProperty('passwordHash')
+    expect(body.users[0]).not.toHaveProperty('deletedAt')
   })
 })

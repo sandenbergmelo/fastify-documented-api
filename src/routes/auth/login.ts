@@ -3,7 +3,7 @@ import { eq } from 'drizzle-orm'
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
 import { db } from '../../database/client.ts'
-import { users } from '../../database/schema/users.ts'
+import { activeUsersView } from '../../database/schema/users.ts'
 import { jwt } from '../../lib/jwt.ts'
 
 const loginSchema = z.object({
@@ -35,8 +35,8 @@ export const login: FastifyPluginAsyncZod = async (app) => {
 
       const [user] = await db
         .select()
-        .from(users)
-        .where(eq(users.email, email))
+        .from(activeUsersView)
+        .where(eq(activeUsersView.email, email))
         .limit(1)
 
       if (!user) {

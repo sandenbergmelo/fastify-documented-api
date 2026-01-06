@@ -8,7 +8,8 @@ import { eq } from 'drizzle-orm'
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import z from 'zod'
 import { db } from '../../database/client.ts'
-import { users } from '../../database/schema/users.ts'
+import { activeUsersView, users } from '../../database/schema/users.ts'
+import { auth } from '../../hooks/auth.ts'
 import {
   getAuthenticatedUserFromRequest,
 } from '../../lib/get-authenticated-user.ts'
@@ -16,7 +17,6 @@ import {
   authHeadersSchema,
   authUnauthorizedResponseSchema,
 } from '../../schemas/auth-schema.ts'
-import { auth } from '../../hooks/auth.ts'
 
 const changePasswordBodySchema = z.object({
   currentPassword: z.string().max(64),
@@ -46,8 +46,8 @@ export const changePassword: FastifyPluginAsyncZod = async (app) => {
 
       const [user] = await db
         .select()
-        .from(users)
-        .where(eq(users.id, userData.sub))
+        .from(activeUsersView)
+        .where(eq(activeUsersView.id, userData.sub))
         .limit(1)
 
       const doesPasswordsMatch = await argon2

@@ -17,5 +17,6 @@ describe('GET /users/profile', () => {
     expect(response.statusCode).toBe(200)
     expect(user).toMatchObject(body)
     expect(body).not.toHaveProperty('passwordHash')
+    expect(body).not.toHaveProperty('deletedAt')
   })
 })

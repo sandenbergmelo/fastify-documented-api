@@ -22,16 +22,11 @@ async function seed() {
       role: 'regular',
     },
     {
-      name: faker.person.fullName(),
-      email: faker.internet.email(),
+      name: 'Deleted User',
+      email: 'deleted@user.com',
       passwordHash,
       role: 'regular',
-    },
-    {
-      name: faker.person.fullName(),
-      email: faker.internet.email(),
-      passwordHash,
-      role: 'regular',
+      deletedAt: new Date(),
     },
     {
       name: faker.person.fullName(),

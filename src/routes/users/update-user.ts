@@ -3,7 +3,7 @@ import { eq } from 'drizzle-orm'
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
 import { db } from '../../database/client.ts'
-import { users } from '../../database/schema/users.ts'
+import { activeUsersView, users } from '../../database/schema/users.ts'
 import { auth } from '../../hooks/auth.ts'
 import {
   getAuthenticatedUserFromRequest,
@@ -45,8 +45,8 @@ export const updateUser: FastifyPluginAsyncZod = async (app) => {
 
       const [fetchedUser] = await db
         .select()
-        .from(users)
-        .where(eq(users.id, loggedUser.sub))
+        .from(activeUsersView)
+        .where(eq(activeUsersView.id, loggedUser.sub))
         .limit(1)
 
       const doesPasswordsMatch = await argon2
