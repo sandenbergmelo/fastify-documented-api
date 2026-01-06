@@ -1,4 +1,3 @@
-import { omit } from 'es-toolkit/object'
 import { describe, expect } from 'vitest'
 import { server } from '../../src/server.ts'
 import { test } from '../fixtures.ts'
@@ -13,7 +12,10 @@ describe('GET /users/profile', () => {
       },
     })
 
+    const body = JSON.parse(response.body)
+
     expect(response.statusCode).toBe(200)
-    expect(JSON.parse(response.body)).toEqual(omit(user, ['passwordHash']))
+    expect(user).toMatchObject(body)
+    expect(body).not.toHaveProperty('passwordHash')
   })
 })

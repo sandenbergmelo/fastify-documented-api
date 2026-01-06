@@ -1,3 +1,4 @@
+import { sql } from 'drizzle-orm'
 import { pgEnum, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 
 export const userRole = pgEnum('user_role', [
@@ -18,7 +19,7 @@ export const users = pgTable('users', {
   updatedAt: timestamp('updated_at', { withTimezone: true })
     .notNull()
     .defaultNow()
-    .$onUpdate(() => new Date()),
+    .$onUpdate(() => sql`now()`),
 })
 
 export type UserInsert = typeof users.$inferInsert

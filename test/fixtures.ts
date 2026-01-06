@@ -27,7 +27,7 @@ export const test = base.extend<UserFixture>({
       await use()
       await db.execute('ROLLBACK')
     },
-    { auto: true },
+    { auto: true, scope: 'test' },
   ],
   userRole: 'regular',
   passwordBeforeHash: async ({}, use) => {
