@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "node --env-file .env --watch ./src/app.ts",
     "pretest": "dotenv -e .env.test drizzle-kit migrate",
-    "test": "dotenv -e .env.test vitest",
-    "test:cov": "dotenv -e .env.test vitest -- --coverage",
+    "test": "dotenv -e .env.test vitest run",
+    "test:cov": "dotenv -e .env.test vitest run -- --coverage",
     "test:ui": "dotenv -e .env.test vitest -- --ui",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
