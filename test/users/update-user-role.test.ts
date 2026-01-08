@@ -25,13 +25,13 @@ describe('PATCH /users/update-role/:id', () => {
 
     const getUserResponse = await server.inject({
       method: 'GET',
-      url: '/users',
+      url: `/users/${user.id}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
 
-    const fetchedUser = getUserResponse.json().users[0] as ActiveUserSelect
+    const fetchedUser = getUserResponse.json() as ActiveUserSelect
 
     expect(fetchedUser.role).toBe(newRole)
   })
