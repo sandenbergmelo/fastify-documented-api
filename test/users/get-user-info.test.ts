@@ -2,25 +2,21 @@ import { describe, expect } from 'vitest'
 import { server } from '../../src/server.ts'
 import { test } from '../fixtures.ts'
 
-describe('GET /users', () => {
+describe('GET /users/:id', () => {
   test.scoped({ userRole: 'manager' })
 
-  test('should return 1 user', async ({ user, token }) => {
+  test('should return user info', async ({ token, anotherUser }) => {
     const response = await server.inject({
       method: 'GET',
-      url: '/users',
+      url: `/users/${anotherUser.id}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
 
-    const body = response.json()
-
     expect(response.statusCode).toBe(200)
-    expect(body.users).toHaveLength(1)
-
-    expect({ users: [user] }).toMatchObject(body)
-    expect(body.users[0]).not.toHaveProperty('passwordHash')
-    expect(body.users[0]).not.toHaveProperty('deletedAt')
+    expect(anotherUser).toMatchObject(response.json())
+    expect(response.json()).not.toHaveProperty('passwordHash')
+    expect(response.json()).not.toHaveProperty('deletedAt')
   })
 })

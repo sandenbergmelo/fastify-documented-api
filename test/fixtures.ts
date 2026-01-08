@@ -14,7 +14,9 @@ interface User extends Omit<UserSelect, 'createdAt' | 'updatedAt'> {
 
 interface UserFixture {
   userRole: UserRole
+  anotherUserRole: UserRole
   user: User
+  anotherUser: User
   passwordBeforeHash: string
   token: string
   transaction: void
@@ -30,6 +32,7 @@ export const test = base.extend<UserFixture>({
     { auto: true, scope: 'test' },
   ],
   userRole: 'regular',
+  anotherUserRole: 'regular',
   passwordBeforeHash: async ({}, use) => {
     const passwordBeforeHash = randomUUID()
     await use(passwordBeforeHash)
@@ -37,6 +40,22 @@ export const test = base.extend<UserFixture>({
   user: async ({ passwordBeforeHash, userRole }, use) => {
     const fakeUser = userFactory.build({
       role: userRole,
+      passwordHash: await argon2.hash(passwordBeforeHash),
+    })
+
+    const [insertedUser] = await db.insert(users).values(fakeUser).returning()
+
+    const user: User = {
+      ...insertedUser,
+      createdAt: insertedUser.createdAt.toISOString(),
+      updatedAt: insertedUser.updatedAt.toISOString(),
+    }
+
+    await use(user)
+  },
+  anotherUser: async ({ passwordBeforeHash, anotherUserRole }, use) => {
+    const fakeUser = userFactory.build({
+      role: anotherUserRole,
       passwordHash: await argon2.hash(passwordBeforeHash),
     })
 

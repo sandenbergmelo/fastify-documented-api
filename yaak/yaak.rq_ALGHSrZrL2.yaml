@@ -1,0 +1,27 @@
+type: http_request
+model: http_request
+id: rq_ALGHSrZrL2
+createdAt: 2026-01-08T18:25:15.470387810
+updatedAt: 2026-01-08T18:27:11.382583679
+workspaceId: wk_mgfmCzmgTY
+folderId: fl_uPmpiQjcVg
+authentication:
+  token: ${[ response.body.path(request='rq_JjBtRBhGoR', behavior='ttl', ttl='3600', result='first', join=b64'LCA', path=b64'JC50b2tlbg') ]}
+authenticationType: bearer
+body: {}
+bodyType: null
+description: ''
+headers: []
+method: GET
+name: Get user info
+sortPriority: 333.3333333333333
+url: ${[ BASE_URL ]}/users/:id
+urlParameters:
+- enabled: true
+  name: :id
+  value: e0143740-9f8e-4270-a83f-4bd469d394e4
+  id: 9CQh6rycbU
+- enabled: true
+  name: ''
+  value: ''
+  id: xrjD0ZyY34

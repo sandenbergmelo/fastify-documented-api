@@ -18,6 +18,7 @@ import { getUsers } from './routes/users/get-users.ts'
 import { profile } from './routes/users/profile.ts'
 import { updateUserRole } from './routes/users/update-user-role.ts'
 import { updateUser } from './routes/users/update-user.ts'
+import { getUserInfo } from './routes/users/get-user-info.ts'
 
 const isTest = env.NODE_ENV === 'test'
 
@@ -96,5 +97,6 @@ app.register(profile)
 app.register(updateUserRole)
 app.register(updateUser)
 app.register(deleteUser)
+app.register(getUserInfo)
 
 export { app as server }
