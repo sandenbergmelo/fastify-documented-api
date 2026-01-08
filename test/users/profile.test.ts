@@ -12,7 +12,7 @@ describe('GET /users/profile', () => {
       },
     })
 
-    const body = JSON.parse(response.body)
+    const body = response.json()
 
     expect(response.statusCode).toBe(200)
     expect(user).toMatchObject(body)

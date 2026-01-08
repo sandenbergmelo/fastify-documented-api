@@ -15,7 +15,7 @@ describe('POST /users', () => {
     })
 
     expect(response.statusCode).toBe(201)
-    expect(JSON.parse(response.body)).toEqual({
+    expect(response.json()).toEqual({
       userId: expect.any(String),
     })
   })
@@ -34,7 +34,7 @@ describe('POST /users', () => {
     })
 
     expect(response.statusCode).toBe(409)
-    expect(JSON.parse(response.body)).toEqual({
+    expect(response.json()).toEqual({
       error: 'Conflict',
     })
   })
